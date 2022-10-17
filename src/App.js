@@ -1,22 +1,24 @@
-import logo from"./img/logo.png";
+import logo from "./img/logo.png"
 import cart from "./img/cart.svg"
 import user from "./img/user.svg"
 import plus from "./img/plus.svg";
 import search from "./img/search.svg";
 import sneakers from "./img/sneakers/sneakerF.jpg";
-import heartUnLike from "./img/heartLike.svg";
+import heartUnLike from "./img/heartUnLike.svg";
+import heartLike from "./img/heartLike.svg";
 import btnRemove from "./img/btn-remove.svg";
 import arrow from "./img/arrow.svg";
 
+import Card from "./components/Card";
 
 
 
 function App() {
   return (
     <div className="wrapper clear">
-      <div className="overlay">
+      <div style={{display: "none"}} className="overlay">
         <div className="drawer">
-          <h2 className="d-flex justify-between">Корзина <img className="removeBtn cu-p" src={btnRemove} alt="Remove"/></h2>
+          <h2 className="d-flex justify-between mb-20">Корзина <img className="removeBtn cu-p" src={btnRemove} alt="Remove"/></h2>
 
           <div className="items">
               <div className="cartItem d-flex align-center mb-20 p-5">
@@ -89,78 +91,14 @@ function App() {
           <h1 >Все кроссовки</h1>
           <div className="search-block d-flex">
               <img src={search} alt="Search" />
-              <input placeholder="Поиск ..." />
+              <input placeholder="Поиск..." />
           </div>
         </div>
         <div className="d-flex justify-center flex-wrap	">
-          <div className="card">
-            <div className="favorite">
-              <img src={heartUnLike} alt="UnLike"/>
-            </div>
-            
-            <img width={133} hight={133} src={sneakers} alt="Sneakers"/>
-            <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
-            <div className="d-flex justify-between align-center">
-              <div className="d-flex flex-column">
-                <span>Цена: </span>
-                <b>12 999 руб.</b>
-              </div>
-              <button className="button">
-                <img className="d-flex" width={20} hight={20} src={plus} alt=""/>
-              </button>
-            </div>
-          </div>
-          <div className="card">
-            <div className="favorite">
-              <img src={heartUnLike} alt="UnLike"/>
-            </div>
-            
-            <img width={133} hight={133} src={sneakers} alt="Sneakers"/>
-            <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
-            <div className="d-flex justify-between align-center">
-              <div className="d-flex flex-column">
-                <span>Цена: </span>
-                <b>12 999 руб.</b>
-              </div>
-              <button className="button">
-                <img className="d-flex" width={20} hight={20} src={plus} alt=""/>
-              </button>
-            </div>
-          </div>
-          <div className="card">
-            <div className="favorite">
-              <img src={heartUnLike} alt="UnLike"/>
-            </div>
-            
-            <img width={133} hight={133} src={sneakers} alt="Sneakers"/>
-            <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
-            <div className="d-flex justify-between align-center">
-              <div className="d-flex flex-column">
-                <span>Цена: </span>
-                <b>12 999 руб.</b>
-              </div>
-              <button className="button">
-                <img className="d-flex" width={20} hight={20} src={plus} alt=""/>
-              </button>
-            </div>
-          </div>
-          <div className="card">
-            <div className="favorite">
-              <img src={heartUnLike} alt="UnLike"/>
-            </div>
-            
-            <img width={133} hight={133} src={sneakers} alt="Sneakers"/>
-            <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
-            <div className="d-flex justify-between align-center">
-              <div className="d-flex flex-column">
-                <span>Цена: </span>
-                <b>12 999 руб.</b>
-              </div>
-              <button className="button">
-                <img className="d-flex" width={20} hight={20} src={plus} alt=""/>
-              </button>
-            </div>
-          </div>
+          <Card heartUnLike={heartLike} sneakers={sneakers} plus={plus}/>
+          <Card heartUnLike={heartLike} sneakers={sneakers} plus={plus}/>
+          <Card heartUnLike={heartUnLike} sneakers={sneakers} plus={plus}/>
+          <Card heartUnLike={heartUnLike} sneakers={sneakers} plus={plus}/>
         </div>
           
       </div>
