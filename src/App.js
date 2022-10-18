@@ -10,82 +10,15 @@ import btnRemove from "./img/btn-remove.svg";
 import arrow from "./img/arrow.svg";
 
 import Card from "./components/Card";
-
-
+import Header from "./components/Header";
+import Drawer from "./components/Drawer";
 
 function App() {
   return (
-    <div className="wrapper clear">
-      <div style={{display: "none"}} className="overlay">
-        <div className="drawer">
-          <h2 className="d-flex justify-between mb-20">Корзина <img className="removeBtn cu-p" src={btnRemove} alt="Remove"/></h2>
+    <div className="wrapper clear">      
+      <Drawer sneakers={sneakers} btnRemove={btnRemove} arrow={arrow} />
+      <Header logo={logo} cart={cart} user={user} />
 
-          <div className="items">
-              <div className="cartItem d-flex align-center mb-20 p-5">
-                <img 
-                  className="mr-20"
-                  width={70} 
-                  hight={70} 
-                  src={sneakers} 
-                  alt="sneakers"
-                />               
-                <div className="mr-20">
-                  <p className="mb-5">Мужские Кроссовки Nike Blazer Mid Suede</p>
-                  <b>12 999 руб.</b>
-                </div>
-                <img className="removeBtn" src={btnRemove} alt="Remove"/>
-              </div>  
-              <div className="cartItem d-flex align-center mb-20">
-                <img 
-                  className="mr-20"
-                  width={70} 
-                  hight={70} 
-                  src={sneakers} 
-                  alt="sneakers"/>               
-                <div className="mr-20">
-                  <p className="mb-5">Мужские Кроссовки Nike Blazer Mid Suede</p>
-                  <b>12 999 руб.</b>
-                </div>
-                <img className="removeBtn" src={btnRemove} alt="Remove" />
-              </div> 
-              <div className="cartTotalBlock">
-                <ul>
-                  <li>
-                    <span>Итого:</span>
-                    <div></div>
-                    <b>21 498 руб. </b>
-                  </li>
-                  <li>
-                    <span>Налог 5%:</span>
-                    <div></div>
-                    <b>1074 руб. </b>
-                  </li>
-                </ul>   
-                <button className="greenButton">Оформить заказ! <img src={arrow} alt="arrow" /></button>  
-              </div>                         
-          </div>               
-        </div>
-      </div>
-
-
-      <header className="d-flex justify-between align-center p-40">
-        <div className="d-flex align-center">
-          <img width={40} hight={40} src={logo}/>
-          <div>
-            <h3 className="text-uppercase">React Sneakers</h3>
-            <p className="opacity-5">Магазин лучших кроссовок</p>
-          </div>
-        </div>        
-        <ul className="headerRight d-flex ">
-          <li className="mr-30">
-            <img width={18} hight={18} src={cart} /> 
-            <span>1205 руб.</span>
-          </li>
-          <li>
-            <img width={18} hight={18} src={user}/>
-          </li>
-        </ul>
-      </header>
       <div className="content p-40 ">
         <div className="d-flex align-center justify-between mb-40">
           <h1 >Все кроссовки</h1>
@@ -99,8 +32,15 @@ function App() {
           <Card heartUnLike={heartLike} sneakers={sneakers} plus={plus}/>
           <Card heartUnLike={heartUnLike} sneakers={sneakers} plus={plus}/>
           <Card heartUnLike={heartUnLike} sneakers={sneakers} plus={plus}/>
-        </div>
-          
+          <Card heartUnLike={heartLike} sneakers={sneakers} plus={plus}/>
+          <Card heartUnLike={heartLike} sneakers={sneakers} plus={plus}/>
+          <Card heartUnLike={heartUnLike} sneakers={sneakers} plus={plus}/>
+          <Card heartUnLike={heartUnLike} sneakers={sneakers} plus={plus}/>
+          <Card heartUnLike={heartLike} sneakers={sneakers} plus={plus}/>
+          <Card heartUnLike={heartLike} sneakers={sneakers} plus={plus}/>
+          <Card heartUnLike={heartUnLike} sneakers={sneakers} plus={plus}/>
+          <Card heartUnLike={heartUnLike} sneakers={sneakers} plus={plus}/>
+        </div>         
       </div>
     </div>
   );

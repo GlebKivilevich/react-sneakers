@@ -97,7 +97,7 @@ header {
   display: flex;
   flex-direction: column;
   position: absolute;
-  width: 385px;
+  width: 420px;
   height: 100%;
   right: 0;
   background: #ffffff;
@@ -105,9 +105,10 @@ header {
   padding: 30px;
 
   .items {
+    flex: 1;
     overflow: auto;
     margin-bottom: 40px;
-    flex: 1;
+    
   }
 
   h2{
