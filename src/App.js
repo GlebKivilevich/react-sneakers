@@ -1,18 +1,22 @@
-import Card from "./components/Card";
+import Card from "./components/Card/Card";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 
 const arr = [
-  {titel: "Мужские Кроссовки Nike Blazer Mid Suede", price: 12999, sneakers: "/image/sneakers/sneakerTh.jpg", userLike: false},
-  {titel: "Мужские Кроссовки Nike Air Max 270", price: 15650, sneakers: "../../image/sneakers/sneakerF.jpg", userLike: true},
-  {titel: "Мужские Кроссовки Nike Blazer Mid Suede", price: 12999, sneakers: "../../image/sneakers/sneakerTh.jpg", userLike: false},
-  {titel: "Мужские Кроссовки Nike Air Max 270", price: 21650, sneakers: "../../image/sneakers/sneakerS.jpg", userLike: true},
-  {titel: "Мужские Кроссовки Nike Eazy Boost 320", price: 9999, sneakers: "../../image/sneakers/sneakerF.jpg", userLike: true},
-  {titel: "Мужские Кроссовки Nike Air Max 150", price: 15650, sneakers: "../../image/sneakers/sneakerF.jpg", userLike: true},
-  {titel: "Мужские Кроссовки Nike Blazer Bock", price: 6999, sneakers: "../../image/sneakers/sneakerTh.jpg", userLike: false},
-  {titel: "Мужские Кроссовки Nike Air Max 270", price: 5650, sneakers: "../../image/sneakers/sneakerS.jpg", userLike: false},
-  {titel: "Мужские Кроссовки Nike Air Max 150", price: 15650, sneakers: "../../image/sneakers/sneakerF.jpg", userLike: true},
-]
+  {title: "Мужские Кроссовки Nike Blazer Mid Suede", price: 12999, sneakers: "/image/sneakers/1.jpg", userLike: false},
+  {title: "Мужские Кроссовки Nike Air Max 270", price: 11650, sneakers: "/image/sneakers/2.jpg", userLike: true},
+  {title: "Мужские Кроссовки Nike Blazer Mid Suede", price: 8599, sneakers: "/image/sneakers/3.jpg", userLike: false},
+  {title: "Кроссовки Puma X Aka Boku Future Rider", price: 7650, sneakers: "/image/sneakers/4.jpg", userLike: true},
+  {title: "Мужские Кроссовки Under Armour Curry 8", price: 15150, sneakers: "/image/sneakers/5.jpg", userLike: true},
+  {title: "Мужские Кроссовки Nike Blazer Mid Suede", price: 12999, sneakers: "/image/sneakers/1.jpg", userLike: false},
+  {title: "Мужские Кроссовки Nike Air Max 270", price: 11650, sneakers: "/image/sneakers/2.jpg", userLike: true},
+  {title: "Мужские Кроссовки Nike Blazer Mid Suede", price: 8599, sneakers: "/image/sneakers/3.jpg", userLike: false},
+  {title: "Кроссовки Puma X Aka Boku Future Rider", price: 7650, sneakers: "/image/sneakers/4.jpg", userLike: true},
+  {title: "Мужские Кроссовки Under Armour Curry 8", price: 15150, sneakers: "/image/sneakers/5.jpg", userLike: true},
+  {title: "Кроссовки Puma X Aka Boku Future Rider", price: 7650, sneakers: "/image/sneakers/4.jpg", userLike: true},
+  {title: "Мужские Кроссовки Under Armour Curry 8", price: 15150, sneakers: "/image/sneakers/5.jpg", userLike: true},
+
+];
 
 function App() {
   return (
@@ -29,30 +33,17 @@ function App() {
           </div>
         </div>
         <div className="d-flex justify-between flex-wrap	m-auto">
-          {/* <Card price={"12 990"} titel={"Мужские Кроссовки Nike Blazer Mid Suede"} sneakers={sneakersTwo} />
-          <Card price={"15 645"} titel={"Мужские Кроссовки Nike Air Max 270"} sneakers={sneakers} /> */}
           {
             arr.map((item, index) => (
               <Card 
                 key={index} 
-                titel={item.titel} 
+                titel={item.title} 
                 price={item.price} 
                 sneakers={item.sneakers}
                 userLike={item.userLike}
               />
             ))
-
-            // arr.map((val) => (
-            //   <Card/>
-            // ))
           }
-          {/* <Card heartUnLike={heartLike} sneakers={sneakers} plus={plus}/>
-          <Card heartUnLike={heartLike} sneakers={sneakers} plus={plus}/>
-          <Card heartUnLike={heartUnLike} sneakers={sneakers} plus={plus}/>
-          <Card heartUnLike={heartUnLike} sneakers={sneakers} plus={plus}/>
-          <Card heartUnLike={heartLike} sneakers={sneakers} plus={plus}/>
-          <Card heartUnLike={heartLike} sneakers={sneakers} plus={plus}/>          <Card heartUnLike={heartLike} sneakers={sneakers} plus={plus}/> */}
-
         </div>         
       </div>
     </div>
