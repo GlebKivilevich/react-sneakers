@@ -1,3 +1,5 @@
+import {useState} from "react"
+
 import Card from "./components/Card/Card";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
@@ -23,7 +25,6 @@ function App() {
     <div className="wrapper clear">      
       <Drawer/>
       <Header/>
-
       <div className="content p-40 ">
         <div className="d-flex align-center justify-between mb-40">
           <h1 >Все кроссовки</h1>
@@ -41,6 +42,8 @@ function App() {
                 price={item.price} 
                 sneakers={item.sneakers}
                 userLike={item.userLike}
+                onFavourite={() => console.log("Добавили в закладки")}
+                onPlus={() => console.log("Нажали на плюс.")}
               />
             ))
           }

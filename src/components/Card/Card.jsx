@@ -1,12 +1,14 @@
+import { useState } from "react";
 import styles from"./Card.module.scss";
 
-console.log(styles);
 function Card(props) {
+    const [isAdded, setIsAdded] = useState(false);
+
     const {price, userLike, sneakers, titel} = props;
 
     return (
         <div className={styles.card}>
-            <div className={styles.favorite}>
+            <div onClick={() => props.onFavourite()} className={styles.favorite}>
               <img src={userLike ? "/image/heartLike.svg" : "/image/heartUnLike.svg"} alt="UnLike"/>
             </div>            
             <img width={133} hight={133} src={sneakers} alt="Sneakers"/>
@@ -16,9 +18,7 @@ function Card(props) {
                 <span>Цена: </span>
                 <b>{price} руб</b>
               </div>
-              <button className="button">
-                <img className="d-flex" width={20} hight={20} src="/image/plus.svg" alt=""/>
-              </button>
+              <img className={styles.plus} onClick={() => setСheck(!isAdded)} src={isAdded ? "/image/btn-pluss-green.svg" : "/image/plus.svg" } alt=""/>
             </div>
         </div>
     );
