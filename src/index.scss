@@ -33,8 +33,6 @@ header {
   h1 { margin: 0;}
 }
 
-
-
 .button {
   background: #FFFFFF;
   border: 1px solid #f3f3f3;
@@ -45,11 +43,45 @@ header {
   cursor: pointer;
 }
 
+.cartEmpty {
+  text-align: center;
+
+  p {
+    width: 280px;
+    line-height: 24px;
+  }
+  .greenButton {
+    width: 245px;
+    margin-top: 20px;
+
+    &:hover {
+      img {
+        transform: rotate(180deg) translateX(6px);
+      }
+    }
+    img {
+      position: relative;
+      top: 1px;
+      transform: rotate(-180deg);
+      margin-right: 15px;
+      transition: transform 0.65s ease-in-out;
+    }
+  }
+}
+
 .search-block {
   border: 1px solid #f3f3f3;
   border-radius: 10px;
   padding: 0 15px;
+  position: relative;
 
+  .clear {
+    position: absolute;
+    right: 5px;
+    top: 30%;
+    width: 20px;
+    height: 20px;
+  }
   input {
     border: 0;
     padding: 13px;
