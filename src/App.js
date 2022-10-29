@@ -10,7 +10,12 @@ function App() {
   const [cartOpened, setCartOpened] = useState(false);
   const [searchValue, setSearchValue] = useState("");
 
-
+  let fullPrice = 0;
+  cartItems.map((item) => {        
+      fullPrice += item.price;
+      console.log(fullPrice);
+  });
+  console.log(fullPrice);
   useEffect(() => {
       axios.get("https://6353e31eccce2f8c02fe9c98.mockapi.io/items")
         .then(res => {
@@ -40,14 +45,14 @@ function App() {
     <div className="wrapper clear">      
      {cartOpened ? 
         <Drawer 
-        onRemove={onRemoveItem}
+          onRemove={onRemoveItem}
           onClose={() => setCartOpened(false)}
           items={cartItems}
-
+          price={fullPrice}
         /> : null}
       <Header 
         onClickCart={() => setCartOpened(true)}
-         
+        price={fullPrice}
       />
       <div className="content p-40 ">
         <div className="d-flex align-center justify-between mb-40">

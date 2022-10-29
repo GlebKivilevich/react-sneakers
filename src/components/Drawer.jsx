@@ -1,4 +1,4 @@
-function Drawer({onClose, items = [], onRemove}) {
+function Drawer({onClose, items = [], onRemove, price}) {
     
     return (
         <div className="overlay">
@@ -8,7 +8,7 @@ function Drawer({onClose, items = [], onRemove}) {
                 items.length > 0 ? 
                 ( 
                 <div className="items">
-                {   items.map((obj, index) => (
+                {   items.map((obj, index) => (                        
                         <div key={index} className="cartItem d-flex align-center mb-20">
                             <img 
                                 className="mr-20"
@@ -30,12 +30,12 @@ function Drawer({onClose, items = [], onRemove}) {
                         <li>
                             <span>Итого:</span>
                             <div></div>
-                            <b>21 498 руб. </b>
+                            <b>{price}руб.</b>
                         </li>
                         <li>
                             <span>Налог 5%:</span>
                             <div></div>
-                            <b>1074 руб. </b>
+                            <b>{((price / 100) * 5).toFixed(2)} руб. </b>
                         </li>
                         </ul>   
                         <button className="greenButton">Оформить заказ! <img src="/image/arrow.svg" alt="arrow" /></button>  
@@ -54,13 +54,9 @@ function Drawer({onClose, items = [], onRemove}) {
                     </button>
                 </div>
                 )
-            }
-            
-
-                          
+            }             
             </div>
         </div>
     );
 }
-
 export default Drawer;
