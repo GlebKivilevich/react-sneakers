@@ -23,6 +23,7 @@ function Home({
             .map((item, index) => (
             <Card 
                 key={index} 
+                id={item.id}
                 titel={item.titel} 
                 price={item.price} 
                 sneakers={item.sneakers}

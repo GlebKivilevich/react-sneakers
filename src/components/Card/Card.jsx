@@ -1,14 +1,13 @@
 import { useState } from "react";
 import styles from"./Card.module.scss";
 
-function Card(props) {
-    const {id, price, sneakers, titel, onPlus, onFavorit, favorited = false} = props;
-
+function Card({id, price, sneakers, titel, onPlus, onFavorit, favorited = false}) {
+    console.log(id);
     const [isAdded, setIsAdded] = useState(false);
     const [isFavorite, setIsFavorite] = useState(favorited);
 
     const onClickPlus = () => {
-      onPlus({price, sneakers, titel});
+      onPlus({price, sneakers, titel, id});
       setIsAdded(!isAdded);
     }
 
