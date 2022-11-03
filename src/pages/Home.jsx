@@ -24,17 +24,6 @@ function Home({
                 {...item}                                                        
             />
             ))
-
-            // return isLoading ? [Array(10)] : filteredItems.map((item, index) => (
-            //     <Card 
-            //         key={index}
-            //         onPlus={(obj) => onAddToCart(obj)}
-            //         onFavorit={obj => onAddToFavorit(obj)}
-            //         added={cartItems.some((obj) => Number(obj.id) === Number(item.id))}  // added - boolean, принимает true
-            //         isLoading={isLoading}   
-            //         {...item}                                                        
-            //     />
-            // ))
     }
 
     return (
