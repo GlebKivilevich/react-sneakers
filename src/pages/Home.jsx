@@ -23,7 +23,7 @@ function Home({
                 isLoading={isLoading}   
                 {...item}                                                        
             />
-            ))
+        ))
     }
 
     return (

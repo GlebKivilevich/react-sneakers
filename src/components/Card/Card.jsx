@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from"./Card.module.scss";
 
 import ContentLoader from "react-content-loader"
@@ -11,11 +11,16 @@ function Card({
     onPlus, 
     onFavorit, 
     favorited = false, 
-    added = false,
+    added,
     isLoading,
   }) {
     const [isAdded, setIsAdded] = useState(added);
     const [isFavorite, setIsFavorite] = useState(favorited);
+
+    useEffect(() => {
+      setIsAdded(added);
+      setIsFavorite(favorited);
+    }, [added, favorited])
 
     const onClickPlus = () => {
       onPlus({id, price, sneakers, titel });
@@ -59,7 +64,7 @@ function Card({
                     <span>Цена: </span>
                     <b>{price} руб</b>
                   </div>
-                  <img className={styles.plus} onClick={() => onClickPlus()} src={added ? "/image/btn-pluss-green.svg" : "/image/plus.svg" } alt=""/>
+                  <img className={styles.plus} onClick={() => onClickPlus()} src={isAdded ? "/image/btn-pluss-green.svg" : "/image/plus.svg" } alt=""/>
                 </div> 
               </>
           }

@@ -20,7 +20,7 @@ function App() {
   cartItems.map((item) => {        
     return fullPrice += item.price;
   });
-
+console.log(cartItems);
   useEffect(() => {
     async function fetchData() {  
       setIsLoading(true);
