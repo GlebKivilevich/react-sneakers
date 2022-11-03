@@ -1,12 +1,42 @@
 import Card from "../components/Card/Card";
 function Home({
     items,
+    cartItems,
     searchValue,
     setSearchValue,
     onChangeSearchInput,
     onAddToCart,
     onAddToFavorit,
+    isLoading
 }) {
+
+    const renderItems = () => {
+        const filteredItems = items.filter((item) => 
+            item.titel.toLowerCase().includes(searchValue.toLowerCase()),
+        );
+        return ( isLoading ? [...Array(8)] : filteredItems).map((item, index) => (
+            <Card 
+                key={index}
+                onPlus={(obj) => onAddToCart(obj)}
+                onFavorit={obj => onAddToFavorit(obj)}
+                added={cartItems.some((obj) => Number(obj.id) === Number(item.id))}                 // added - boolean, принимает true
+                isLoading={isLoading}   
+                {...item}                                                        
+            />
+            ))
+
+            // return isLoading ? [Array(10)] : filteredItems.map((item, index) => (
+            //     <Card 
+            //         key={index}
+            //         onPlus={(obj) => onAddToCart(obj)}
+            //         onFavorit={obj => onAddToFavorit(obj)}
+            //         added={cartItems.some((obj) => Number(obj.id) === Number(item.id))}  // added - boolean, принимает true
+            //         isLoading={isLoading}   
+            //         {...item}                                                        
+            //     />
+            // ))
+    }
+
     return (
         <div className="content p-40 ">
         <div className="d-flex align-center justify-between mb-40">
@@ -18,21 +48,7 @@ function Home({
             </div>
         </div>
         <div className="d-flex flex-wrap m-auto">
-        {
-            items.filter((item) => item.titel.toLowerCase().includes(searchValue.toLowerCase()))
-            .map((item, index) => (
-            <Card 
-                key={index} 
-                id={item.id}
-                titel={item.titel} 
-                price={item.price} 
-                sneakers={item.sneakers}
-                userLike={item.userLike}
-                onPlus={obj => onAddToCart(obj)}
-                onFavorit={obj => onAddToFavorit(obj)}
-            />
-            ))
-        }
+            {renderItems()}
         </div>         
         </div>
     );

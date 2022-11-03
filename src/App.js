@@ -14,31 +14,41 @@ function App() {
   const [favorites, setFavorites] = useState([]);
   const [cartOpened, setCartOpened] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   let fullPrice = 0;
   cartItems.map((item) => {        
-    fullPrice += item.price;
+    return fullPrice += item.price;
   });
+
   useEffect(() => {
-    axios.get("https://6353e31eccce2f8c02fe9c98.mockapi.io/items")
-      .then(res => {
-        setItems(res.data);
-    }); 
-    axios.get("https://6353e31eccce2f8c02fe9c98.mockapi.io/cart")
-      .then(res => {
-        setCartItems(res.data);
-    });
-    axios.get("https://6353e31eccce2f8c02fe9c98.mockapi.io/favorit")
-      .then(res => {
-        setFavorites(res.data);
-    });
+    async function fetchData() {  
+      setIsLoading(true);
+
+      const cartResponse = await 
+        axios.get("https://6353e31eccce2f8c02fe9c98.mockapi.io/cart");
+      const cartFavorit = await 
+        axios.get("https://6353e31eccce2f8c02fe9c98.mockapi.io/favorit");
+      const itemsResponse = await 
+        axios.get("https://6353e31eccce2f8c02fe9c98.mockapi.io/items");         
+      
+      setIsLoading(false);
+
+      setCartItems(cartResponse.data);
+      setItems(itemsResponse.data);
+      setFavorites(cartFavorit.data);
+    }
+
+    fetchData();
+    
   }, []); 
 
   const onAddToCart = (obj) => { 
     try {
-      if (cartItems.find((item) => item.id === Number(obj.id))) {
+      if (cartItems.find((item) => Number(item.id) === Number(obj.id))) {
         axios.delete(`https://6353e31eccce2f8c02fe9c98.mockapi.io/cart/${obj.id}`)
-        setCartItems((prev) => prev.filter((item) => item.id !== Number(obj.id)));
+        setCartItems((prev) => prev.filter((item) => Number(item.id) !== Number(obj.id)));
+
       } 
       else {
         axios.post("https://6353e31eccce2f8c02fe9c98.mockapi.io/cart", obj);
@@ -65,8 +75,7 @@ function App() {
       }
     } catch (error) {
       alert("Не удалось добавить в фавориты")
-    }
-  
+    } 
     
   } 
 
@@ -97,11 +106,13 @@ function App() {
           element={
             <Home 
                 items={items}
+                cartItems={cartItems}
                 searchValue={searchValue}
                 setSearchValue={setSearchValue}
                 onChangeSearchInput={onChangeSearchInput}
                 onAddToCart={onAddToCart}
                 onAddToFavorit={onAddToFavorit}
+                isLoading={isLoading}
               />}
         />
         <Route 
