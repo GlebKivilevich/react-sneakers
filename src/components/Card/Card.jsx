@@ -1,6 +1,7 @@
-import { useEffect, useState,  } from "react";
+import { useEffect, useState, useContext } from "react";
 import styles from"./Card.module.scss";
 import ContentLoader from "react-content-loader"
+import AppContext from "../../context";
 
 function Card({
     id, 
@@ -9,21 +10,22 @@ function Card({
     titel, 
     onPlus, 
     onFavorit, 
-    favorited = false, 
-    added,
-    isLoading,
+    favorited = false,
+    isLoading = false,
   }) {
-    const [isAdded, setIsAdded] = useState(added);
+    const {isItemAdded} = useContext(AppContext);
     const [isFavorite, setIsFavorite] = useState(favorited);
 
-    useEffect(() => {
-      setIsAdded(added);
-      setIsFavorite(favorited); 
-    }, [added, favorited]);
+    // или Context, или useEffect, результат один и тот-же,
+    // ...мб useEffect работает чуть быстрее
+
+    // useEffect(() => {
+    //   setIsAdded(added);
+    //   setIsFavorite(favorited); 
+    // }, [added, favorited]);
 
     const onClickPlus = () => {
       onPlus({id, price, sneakers, titel });
-      setIsAdded(!isAdded);  
     }
     
     const onClickHeart = () => {
@@ -63,7 +65,7 @@ function Card({
                     <span>Цена: </span>
                     <b>{price} руб</b>
                   </div>
-                  <img className={styles.plus} onClick={() => onClickPlus()} src={isAdded ? "/image/btn-pluss-green.svg" : "/image/plus.svg" } alt=""/>
+                  <img className={styles.plus} onClick={() => onClickPlus()} src={isItemAdded(id) ? "/image/btn-pluss-green.svg" : "/image/plus.svg" } alt=""/>
                 </div> 
               </>
           }

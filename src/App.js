@@ -88,8 +88,13 @@ function App() {
     setSearchValue(event.target.value)
   }   
 
+  
+  const isItemAdded = (id) => {
+    return cartItems.some((obj) => Number(obj.id) === Number(id))
+  }
+
   return (
-    <AppContext.Provider value={{cartItems, favorites, items, fullPrice}}>
+    <AppContext.Provider value={{cartItems, favorites, items, fullPrice, isItemAdded, onAddToFavorit}}>
       <div className="wrapper clear">      
       {
         cartOpened ? 
@@ -127,7 +132,7 @@ function App() {
             element={
               <Favorits 
                 // items={favorites}
-                onAddToFavorit={onAddToFavorit}
+                // onAddToFavorit={onAddToFavorit}
               />}
           />
         </Routes>
