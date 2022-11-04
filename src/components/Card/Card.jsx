@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,  } from "react";
 import styles from"./Card.module.scss";
-
 import ContentLoader from "react-content-loader"
 
 function Card({
@@ -19,8 +18,8 @@ function Card({
 
     useEffect(() => {
       setIsAdded(added);
-      setIsFavorite(favorited);
-    }, [added, favorited])
+      setIsFavorite(favorited); 
+    }, [added, favorited]);
 
     const onClickPlus = () => {
       onPlus({id, price, sneakers, titel });
