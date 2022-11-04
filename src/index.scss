@@ -110,7 +110,7 @@ header {
   padding: 30px;
 
   .items {
-    flex: 1;
+    flex: 1 1;
     overflow: auto;
     margin-bottom: 40px;
     
@@ -142,6 +142,17 @@ header {
   }
   .greenButton {
       position: relative;
+
+      &:disabled {
+        background-color: #bebebe !important; 
+        cursor: default;
+
+        &:hover {
+          img {
+            transform: translateX(0px);
+          }
+        }
+      }
 
 
       &:hover {
