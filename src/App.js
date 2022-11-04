@@ -63,7 +63,7 @@ function App() {
       console.log("Что-то пошло не так");
     }     
   } 
-
+ 
   const onRemoveItem = (id) => {
     axios.delete(`https://6353e31eccce2f8c02fe9c98.mockapi.io/cart/${id}`);
     setCartItems((prev) => prev.filter(items => items.id !== id)); 
@@ -73,7 +73,7 @@ function App() {
     try {      
       if (favorites.find((favObj) => favObj.id === obj.id)) {
         axios.delete(`https://6353e31eccce2f8c02fe9c98.mockapi.io/favorit/${obj.id}`);
-        // setFavorites((prev) => prev.filter(items => items.id !== obj.id)); 
+        setFavorites((prev) => prev.filter((items) => Number(items.id) !== Number(obj.id)));
       } else {
         const {data} = await axios.post("https://6353e31eccce2f8c02fe9c98.mockapi.io/favorit", obj);
         setFavorites((prev) => [...prev, data]);  
@@ -87,14 +87,22 @@ function App() {
   const onChangeSearchInput = (event) => {
     setSearchValue(event.target.value)
   }   
-
   
   const isItemAdded = (id) => {
     return cartItems.some((obj) => Number(obj.id) === Number(id))
   }
 
   return (
-    <AppContext.Provider value={{cartItems, favorites, items, fullPrice, isItemAdded, onAddToFavorit}}>
+    <AppContext.Provider value={
+      {cartItems, 
+      favorites, 
+      items, 
+      fullPrice, 
+      isItemAdded,
+      onAddToFavorit, 
+      setCartOpened, 
+      setCartItems}}
+    >
       <div className="wrapper clear">      
       {
         cartOpened ? 
