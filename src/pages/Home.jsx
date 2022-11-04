@@ -9,7 +9,6 @@ function Home({
     onAddToFavorit,
     isLoading
 }) {
-
     const renderItems = () => {
         const filteredItems = items.filter((item) => 
             item.titel.toLowerCase().includes(searchValue.toLowerCase()),
@@ -19,7 +18,6 @@ function Home({
                 key={index}
                 onPlus={(obj) => onAddToCart(obj)}
                 onFavorit={obj => onAddToFavorit(obj)}
-                added={cartItems.some((obj) => Number(obj.id) === Number(item.id))}                 // added - boolean, принимает true
                 isLoading={isLoading}   
                 {...item}                                                        
             />

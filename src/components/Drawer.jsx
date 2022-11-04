@@ -1,5 +1,4 @@
 function Drawer({onClose, items = [], onRemove, price}) {
-    console.log(items);
     return (
         <div className="overlay">
             <div className="drawer">
