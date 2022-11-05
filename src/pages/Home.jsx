@@ -33,7 +33,7 @@ function Home({
                 <input onChange={onChangeSearchInput} value={searchValue} placeholder="Поиск..." />
             </div>
         </div>
-        <div className="d-flex flex-wrap m-auto">
+        <div className="d-flex flex-wrap m-auto justify-center">
             {renderItems()}
         </div>         
         </div>
